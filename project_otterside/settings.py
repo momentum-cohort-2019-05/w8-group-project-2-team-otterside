@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ts7*e868-*is#kl2e^gg47ipk*=j2+2h%bx!oq_valbkx=*g^2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+in_production = bool(os.getenv('PRODUCTION'))
+DEBUG = not in_production
 
 ALLOWED_HOSTS = []
 
@@ -38,12 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',  
+
+    # Third-party apps
+    'debug_toolbar',
 ]
 
 # Custom User Authentication
 AUTH_USER_MODEL = 'core.CustomUser'
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -103,6 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Django-debug-toolbar settings
+
+INTERNAL_IPS = ['127.0.0.1']
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
