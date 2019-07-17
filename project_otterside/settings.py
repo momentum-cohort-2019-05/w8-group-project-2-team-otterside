@@ -127,8 +127,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-<<<<<<< HEAD
-=======
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -139,4 +137,3 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
->>>>>>> 4c77b517082ad838ebbb3f59e5518905e5019ef6
