@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 # Models Created for Code Snippet Manager
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     """Model Representing a User"""
     user_email = models.EmailField(max_length=255)
 
@@ -20,7 +20,7 @@ class Snippet(models.Model):
         snippet_description = models.TextField(max_length=1000, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
         
         # More descriptive than user
-        snippet_creator = models.ForeignKey(to=User, on_delete=models.CASCADE)
+        snippet_creator = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
 
         date_added = models.DateTimeField(auto_now_add=True)
         
