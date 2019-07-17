@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 # Models Created for Code Snippet Manager
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     """Model Representing a User"""
     user_email = models.EmailField(max_length=255)
 
