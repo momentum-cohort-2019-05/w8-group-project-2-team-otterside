@@ -1,26 +1,25 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 
-<h1>My fake blog!</h1>
+<h1>Snippets</h1>
     {% if user.is_authenticated %}
-      <p>Logged as {{ user.username }}</p>
-      <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-      <a href="{% url 'social:begin' 'google-oauth2' %}">
-        Login
-      </a>
-    {% endif %}
-  </div>
+  <div class='tc center bg-blue avenir pa2 mb2'>
+      {% for obj in list_of_snippets %}
+          <p><strong> {{obj.snippet_title}}</strong></p>
+          <p>{{obj.snippet_lang}}</p>
+          <p>{{obj.snippet_code }}</p>
+      {% endfor %} 
+ </div>
 
-  <div>
-    {% for snipped in snippets %}
-      <div>
-        <h2>{{ snippet.snippet_title }}</h2>
-        <p>{{ snippet.snippet_code }}</p>
-      </div>
-    {% endfor %}
-    </div>
+ {% else %}
+ 
+ <div>
+  {% load static %}
+  <img class= "br3" src="{% static "images/otter.png" %}" alt="Otter waving">
+ </div>
+
+
+ {% endif %}
 
 {% endblock %}

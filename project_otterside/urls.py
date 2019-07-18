@@ -24,7 +24,7 @@ urlpatterns = [
     path('', core_views.index, name='index'), 
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
-    # path('', include('social_django.urls', namespace='social')),
+    path('', include('social_django.urls', namespace='social')),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
     name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
@@ -39,4 +39,4 @@ if settings.DEBUG:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
 
-    SOCIAL_AUTH_URL_NAMESPACE = "users:social"
+SOCIAL_AUTH_URL_NAMESPACE = "users:social"
