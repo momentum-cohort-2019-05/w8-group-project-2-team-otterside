@@ -1,0 +1,35 @@
+in HTML:
+
+*need class called "js-snippetlink"* for the snippet
+
+<button class="js-snippetcopybtn">
+
+in JS:
+
+let copySnippetBtn = document.querySelector('.js-snippetcopybtn');
+copySnippetBtn.addEventListener('click', function(event) {
+
+	//Select Snippet
+	let SnippetCopy = document.querySelector('.js-snippetlink');
+	let range = document.createRange();
+	range.selectNode(SnippetCopy);
+	window.getSelection().addRange(range);
+	
+	//Execute Copy Command
+	try {
+	let successful = document.execCommand('copy');
+	let msg = succesful ? 'successful' : 'unsuccessful';
+	console.log('Copy email command was ' + msg);
+	} catch(err) {
+	console.log('Oops, unable to copy');
+	}
+	
+	//Remove Selections
+	window.getSelection().removeAllRanges();
+});
+
+
+citations:
+https://developers.google.com/web/updates/2015/04/cut-and-copy-commands
+
+https://css-tricks.com/native-browser-copy-clipboard/
