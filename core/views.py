@@ -1,12 +1,10 @@
 from django.shortcuts import render
+from .models import Snippet
 
-# Views created for Code Snippet
 def index(request):
-    """View function for home page of site."""
-
-    snippet_codes = Snippet.objects.all().count()
     context = {
-        'snippet_codes': snippet_codes,
+        'snippets': Snippet.objects.order_by('-date')
+        if request.user.is_authenticated else []
     }
 
-    return render(request, 'index.html', context=context)
+    return render(request, 'index.html', context)
