@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Third-party apps
     'debug_toolbar',
+    'social_django',
 ]
 
 # Custom User Authentication
@@ -137,3 +138,24 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
+
+
+# Google OAuth2
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# Here is your client ID and client secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '279646626129-d5q2pui85u1b2lo9ad6k6vgcma22mcd4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'O7kZLxuJZBf2-XLocp7oBGW5'
+
+
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
