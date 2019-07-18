@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, redirect
 from .models import Snippet
 from core.forms import SnippetForm
 from django.views.generic.edit import CreateView
