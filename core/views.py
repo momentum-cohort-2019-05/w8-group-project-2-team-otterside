@@ -2,9 +2,12 @@ from django.shortcuts import render
 from .models import Snippet
 
 def index(request):
-    context = {
-        'snippets': Snippet.objects.order_by('-date')
-        if request.user.is_authenticated else []
-    }
+    """View function for home page of site."""
 
-    return render(request, 'index.html', context)
+    list_of_snippets = Snippet.objects.all()
+    
+    context = {
+        'list_of_snippets': list_of_snippets,
+     
+    }
+    return render(request, 'index.html', context=context)

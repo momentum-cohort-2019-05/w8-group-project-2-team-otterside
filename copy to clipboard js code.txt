@@ -21,7 +21,7 @@ copySnippetBtn.addEventListener('click', function(event) {
 	let msg = succesful ? 'successful' : 'unsuccessful';
 	console.log('Copy email command was ' + msg);
 	} catch(err) {
-	console.log('Oopd, unable to copy');
+	console.log('Oops, unable to copy');
 	}
 	
 	//Remove Selections
