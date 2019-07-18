@@ -1,0 +1,10 @@
+<nav class="pa3 pa4-ns bg-dark-blue avenir">
+    <a class="link dim white b f6 f5-ns dib mr3" href="{% url 'index' %}" title="Home"> The OtterSide</a>
+    <a class="link dim white    f6 f5-ns dib mr3" href="{% url 'index' %}" title="Home">Home</a>
+    {% if user.is_authenticated %}
+    <a class="link dim white f6 f5-ns dib mr3" href="{% url 'logout' %}" title="Log out">Log out</a>
+    {% else %}
+    <a class="link dim white f6 f5-ns dib mr3" href="{% url 'social:begin' 'google-oauth2' %}" title="Login">Login</a>
+    {% endif %}
+    <a class="link dim white f6 f5-ns dib" href="#" title="Contact">Placeholder</a>
+</nav>

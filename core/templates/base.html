@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% block title %}<title>Django</title>{% endblock%}
+  {% block title %}<title>OtterSide</title>{% endblock%}
   {% block meta %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -14,11 +14,12 @@
 </head>
 
 <body class= "mw-100">
+    {% include "snippets/nav.html" %}
  
-    <div class = 'avenir ml5 mt5'>
+    <div class = 'avenir ml5 mt5 center tc'>
     {% block content %}
     {% endblock %}
     </div>  
-    
+    {% include "snippets/footer.html" %}
 </body>
 </html>
