@@ -4,12 +4,19 @@
 
 <h1>Snippets</h1>
     {% if user.is_authenticated %}
-  <div class='tc center bg-blue avenir pa2 mb2'>
+  <div class='tc center avenir w-70'>
       {% for obj in list_of_snippets %}
+        <div class='ba bg-blue white'>
           <p><strong> {{obj.snippet_title}}</strong></p>
-          <p>{{obj.snippet_lang}}</p>
+        </div>
+        <div>
+          <p> Language: {{obj.snippet_lang}}</p>
+        </div>
+        <div>
           <p>{{obj.snippet_code }}</p>
+        </div>
       {% endfor %} 
+      
  </div>
 
  {% else %}
