@@ -14,11 +14,12 @@
 </head>
 
 <body class= "mw-100">
+    {% include "snippets/nav.html" %}
  
-    <div class = 'avenir ml5 mt5'>
+    <div class = 'avenir ml5 mt5 center tc'>
     {% block content %}
     {% endblock %}
     </div>  
-    
+    {% include "snippets/footer.html" %}
 </body>
 </html>
