@@ -24,6 +24,7 @@ urlpatterns = [
     path('', core_views.index, name='index'), 
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('add_snippet', core_views.add_snippet, name='add_snippet'),
     path('', include('social_django.urls', namespace='social')),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
     name='logout'),
