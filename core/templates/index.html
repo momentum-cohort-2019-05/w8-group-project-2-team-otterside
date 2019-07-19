@@ -2,6 +2,16 @@
 
 {% block content %}
 
+<hr>
+<div id="searchDiv">
+<h2 id="searchHeader">Search Results: </h2>
+</div>
+<br>
+<div id="searcResults">
+  <div id="search"></div>
+</div>
+<hr>
+
 
 <h1>Snippets</h1>
     {% if user.is_authenticated %}
@@ -9,7 +19,7 @@
       {% for obj in list_of_snippets %}
         <div class='ba bg-blue white'>
           <p><strong> {{obj.snippet_title}}</strong></p>
-          <p><a href="{{ obj.get_absolute_url }}">Click to Edit Snippet</a></p>
+          <p><a class='edit_snippet' href="{{ obj.get_absolute_url }}">Click to Edit Snippet</a></p>
         </div>
         <div>
           <p>by {{obj.snippet_creator}}</p>
