@@ -16,11 +16,6 @@
 
 <body class= "mw-100">
     {% include "snippets/nav.html" %}
-    <form id="searchForm">
-      <div id="codeSearch"> 
-          <input id="searchBar" type="text" placeholder="Search for Code Snippet..." onfocus="this.value=''">
-          <button id="searchButton" type="submit">Search</button>
-    </form>
     <div class = 'avenir ml5 mt5 center tc'>
     {% block content %}
     {% endblock %}
