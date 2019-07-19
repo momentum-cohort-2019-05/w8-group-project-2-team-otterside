@@ -17,7 +17,7 @@ class Snippet(models.Model):
         snippet_code = models.TextField(help_text="Enter the snippet code")
         
         # Description field is optional
-        snippet_description = models.TextField(max_length=1000, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
+        snippet_description = models.TextField(max_length=200, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
         
         # More descriptive than user
         snippet_creator = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
