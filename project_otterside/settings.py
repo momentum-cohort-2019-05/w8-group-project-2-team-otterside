@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'debug_toolbar',
     'social_django',
+    'crispy_forms',
 ]
 
 # Custom User Authentication
@@ -159,3 +160,5 @@ LOGIN_URL = '/auth/login/google-oauth2/'
 LOGOUT_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -2,13 +2,19 @@
 
 {% block content %}
 
+
 <h1>Snippets</h1>
     {% if user.is_authenticated %}
   <div class='tc center avenir w-70'>
       {% for obj in list_of_snippets %}
         <div class='ba bg-blue white'>
           <p><strong> {{obj.snippet_title}}</strong></p>
+          <p><a href="{{ obj.get_absolute_url }}">Click to Edit Snippet</a></p>
         </div>
+        <div>
+          <p>by {{obj.snippet_creator}}</p>
+          <p>added {{obj.date_added}}</p>
+      </div>
         <div>
           <p> Language: {{obj.snippet_lang}}</p>
         </div>
