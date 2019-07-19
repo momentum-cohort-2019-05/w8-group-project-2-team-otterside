@@ -22,7 +22,7 @@ def add_snippet(request):
             snippet = form.save(commit=False)
             snippet.post = Snippet
             form.save(Snippet)
-            return redirect('snippet')
+            return redirect('index')
     else:
         form = SnippetForm()
     return render(request, 'core/snippet_form.html', {'form':form})
