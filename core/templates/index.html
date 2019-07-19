@@ -19,8 +19,9 @@
       {% for obj in list_of_snippets %}
         <div class='ba bg-blue white'>
           <p><strong> {{obj.title}}</strong></p>
-          <a class='f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
-          <a class="f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+          <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
+          <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+          <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
 
         </div>
         <div>
@@ -30,12 +31,12 @@
           <p> Language: {{obj.languages}}</p>
         </div>
         <div>
-        <pre><code class='language-js'>
-          <p>{{obj.code }}</p>
+      {% comment %}  <pre><code class='language-{{obj.languages}}'> {% endcomment %}
+        <pre><code class='language-js'></code>
+        <p>{{obj.code }}</p>
         </code></pre>
         </div>
       {% endfor %}
-      <a class="f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add Snippet</a>
  </div>
 
  {% else %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<h2>Delete Snippet</h2>
+<p> Are you sure you want to delete this: {{ snippet }} ?</p>
+<form action="Delete Snippet" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete.">
+</form>
+{% elif request.user.is_authenticated %}
+<p>You are not authorized to delete the snippet for this user.</p>
+{% else %}
+<ul>
+    <li>
+        <a href="{% url 'auth_login' %}">Login to Continue</a>
+    </li>
+    <li>
+        <a href="{% url 'registration_register' %}">Register to create a snippet</a>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}

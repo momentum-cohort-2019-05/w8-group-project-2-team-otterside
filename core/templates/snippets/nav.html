@@ -5,9 +5,10 @@
     <a class="link dim white f6 f5-ns dib mr3">
     <div class="red fw4">Logged in as {{ request.user|title }}</div> </a><a class="link dim white f6 f5-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">  Logout</a>
     {% else %}
-    <a class="link dim white f6 f5-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a><a class="link dim white f6 f5-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
+    <a class="link dim white f6 f5-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
+    <a class="link dim white f6 f5-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
     {% endif %}
-    <a class="link dim white f6 f5-ns dib" href="#" title="Contact">Placeholder</a>
+    <a class="link dim white f6 f5-ns dib" href="#" title="Contact"> Contact </a>
     <form id="searchForm">
         <div id="codeSearch" class="flex tr"> 
             <input id="searchBar" class="br3" type="text" placeholder="Search for Code Snippet..." onfocus="this.value=''">
