@@ -1,0 +1,14 @@
+def copy_snippet(self, id):
+	view = self.context['view']
+	snippet_id = id
+	snippet_to_copy = Snippet.objects.get(pk=snippet_id)
+	copy_snippet_creator = snippet.snippet_creator.all()
+	
+	snippet.id = None
+	snippet.save()
+	for item in copy_snippet_creator:
+		item.id = None
+		item.save()
+		snippet_to_copy.snippet_creator.add(item)
+	
+citation: https://stackoverflow.com/questions/41637096/how-to-copy-a-django-model-instance-and-all-related-data
