@@ -31,3 +31,16 @@
     width: 75px;
     font-size: 15px;
 }
+
+#resultsDiv{
+    justify-content: center;
+}
+
+#searchResults{
+    display: center;
+    font-size: 15px;
+}
+
+.edit_snippet{
+    color: aquamarine;
+}
