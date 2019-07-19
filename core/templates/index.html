@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% comment %}
 <hr>
 <div id="searchDiv">
 <h2 id="searchHeader">Search Results: </h2>
@@ -11,27 +11,30 @@
   <div id="search"></div>
 </div>
 <hr>
-
+{% endcomment %}
 
 <h1>Snippets</h1>
     {% if user.is_authenticated %}
   <div class='tc center avenir w-70'>
       {% for obj in list_of_snippets %}
         <div class='ba bg-blue white'>
-          <p><strong> {{obj.snippet_title}}</strong></p>
-          <p><a class='edit_snippet' href="{{ obj.get_absolute_url }}">Click to Edit Snippet</a></p>
+          <p><strong> {{obj.title}}</strong></p>
+          <a class='f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
+          <a class="f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+
         </div>
         <div>
-          <p>by {{obj.snippet_creator}}</p>
           <p>added {{obj.date_added}}</p>
       </div>
         <div>
-          <p> Language: {{obj.snippet_lang}}</p>
+          <p> Language: {{obj.Language}}</p>
         </div>
         <div>
-          <p>{{obj.snippet_code }}</p>
+        <pre><code class='language-js'>
+          <p>{{obj.code }}</p>
+        </code></pre>
         </div>
-      {% endfor %} 
+      {% endfor %}
       <a class="f5 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add Snippet</a>
  </div>
 
