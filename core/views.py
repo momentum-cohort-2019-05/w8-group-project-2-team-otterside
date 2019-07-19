@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_list_or_404, redirect
 from .models import Snippet
 from core.forms import SnippetForm
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
 
 def index(request):
     """View function for home page of site."""
@@ -22,7 +23,14 @@ def add_snippet(request):
             snippet = form.save(commit=False)
             snippet.post = Snippet
             form.save(Snippet)
-            return redirect('snippet')
+            return redirect('index')
     else:
         form = SnippetForm()
     return render(request, 'core/snippet_form.html', {'form':form})
+
+# View to update snippet
+class SnippetUpdate(UpdateView):
+    """View for editing daily record"""
+    model = Snippet
+    fields = '__all__'
+    success_url = reverse_lazy('index')
