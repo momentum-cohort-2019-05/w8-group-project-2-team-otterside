@@ -50,13 +50,17 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'django_filters',
+    'corsheaders',
 ]
 
 # Custom User Authentication
 AUTH_USER_MODEL = 'core.CustomUser'
 
 MIDDLEWARE = [
+    # Third-party apps
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
