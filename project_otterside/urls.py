@@ -17,16 +17,30 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core import views as core_views
 from django.contrib.auth import logout
+
+# Core APP
+from core import views as core_views
+# Core_API APP
+from rest_framework import routers
+from core_api import views as core_api_views
+from core_api.views import SnippetViewSet, CustomUserViewSet
+
+router = routers.DefaultRouter()
+router.register(r'snippets', SnippetViewSet)
+router.register(r'customusers', CustomUserViewSet)
 
 urlpatterns = [
     path('', core_views.index, name='index'), 
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     path('add_snippet', core_views.add_snippet, name='add_snippet'),
-    path('core/snippet/<int:pk>/delete/', core_views.SnippetDelete.as_view(), name='delete_snippet'),
     path('core/snippet/<int:pk>/change/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
+    path('core/snippet/<int:pk>/delete/', core_views.SnippetDelete.as_view(), name='delete_snippet'),
+
+    # Wire up API using automatic URL routing.
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls)),
     path('', include('social_django.urls', namespace='social')),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
     name='logout'),
