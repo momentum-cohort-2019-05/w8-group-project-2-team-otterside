@@ -3,6 +3,8 @@ from .models import Snippet
 from core.forms import SnippetForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib import messages
+from django_filters.rest_framework import DjangoFilterBackend
 
 def index(request):
     """View function for home page of site."""
@@ -35,7 +37,24 @@ class SnippetUpdate(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('index')
 
-class SnippetDelete(DeleteView):
-    """View for deleting snippet file"""
-    model = Snippet
-    success_url = reverse_lazy('index')
+# View to delete snippet
+def delete_snippet(request):
+    snippet = get_list_or_404(Snippet)
+
+    if request.method =="POST":
+        snippet.delete()
+        messages.success(request, "Code snippet deleted!")
+        return redirect('index')
+    
+    return render(request, 'core/snippet_confirm_delete.html')
+
+# View to search snippet
+def search_snippet(request):
+    if request.method == "POST":
+        search_text = request.POST['search_text']
+    else:
+        search_text = ''
+    
+    snippets = Snippet.objects.filter(title__contains=search_text)
+
+    return render(request, 'base.html', {'snippets': snippets})

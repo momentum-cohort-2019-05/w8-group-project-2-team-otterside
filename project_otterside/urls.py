@@ -36,7 +36,7 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('add_snippet', core_views.add_snippet, name='add_snippet'),
     path('core/snippet/<int:pk>/change/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
-    path('core/snippet/<int:pk>/delete/', core_views.SnippetDelete.as_view(), name='delete_snippet'),
+    path('delete/', core_views.delete_snippet, name='delete_snippet'),
 
     # Wire up API using automatic URL routing.
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
