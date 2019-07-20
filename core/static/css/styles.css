@@ -12,7 +12,7 @@
 }
 
 #searchButton{
-    display: center;
+    /* display: center; */
     margin: 1rem;
     border: 2px solid black;
     background: #008080;
