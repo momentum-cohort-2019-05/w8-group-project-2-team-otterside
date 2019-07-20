@@ -55,7 +55,7 @@ class Snippet(models.Model):
         ]
 
         languages = models.CharField(
-        max_length=5,
+        max_length=7,
         choices=LANGUAGE_CHOICES,
         default=HTML,
     )
