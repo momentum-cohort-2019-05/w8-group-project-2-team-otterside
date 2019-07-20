@@ -12,6 +12,7 @@ django-registration-redux = "*"
 social-auth-app-django = "*"
 django-crispy-forms = "*"
 django-filter = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"
