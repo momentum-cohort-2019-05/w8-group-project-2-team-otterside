@@ -34,6 +34,8 @@ urlpatterns = [
     path('', core_views.index, name='index'), 
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('snippets/', core_views.SnippetListView.as_view(), name='snippets'),
+    path('snippet/<int:pk>', core_views.SnippetDetailView.as_view(), name='snippet-detail'),
     path('add_snippet', core_views.add_snippet, name='add_snippet'),
     path('core/snippet/<int:pk>/change/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
     path('delete/', core_views.delete_snippet, name='delete_snippet'),
