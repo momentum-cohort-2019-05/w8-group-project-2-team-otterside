@@ -55,8 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault()
         input = encodeURIComponent(searchBar.value)
         searchURL = `http://localhost:8000/?search=${(input)}`
+        const cors = "https://cors-anywhere.herokuapp.com/"
 
-        fetch(searchURL)
+        fetch(cors + searchURL)
             .then(response => response.json())
             .then(function (data) {
                 console.log(data)
