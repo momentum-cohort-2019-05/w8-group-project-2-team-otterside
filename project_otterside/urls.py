@@ -39,6 +39,8 @@ urlpatterns = [
     path('add_snippet', core_views.add_snippet, name='add_snippet'),
     path('core/snippet/<int:pk>/change/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
     path('delete/', core_views.delete_snippet, name='delete_snippet'),
+    path('snippet/<int:pk>/copy_snippet/', core_views.copy_snippet, name='copy_snippet'),
+    path('user_page/', core_views.user_view, name='user_page'),
 
     # Wire up API using automatic URL routing.
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
