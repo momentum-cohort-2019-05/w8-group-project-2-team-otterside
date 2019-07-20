@@ -38,5 +38,4 @@ class SnippetUpdate(UpdateView):
 class SnippetDelete(DeleteView):
     """View for deleting snippet file"""
     model = Snippet
-    fields = '__all__'
     success_url = reverse_lazy('index')

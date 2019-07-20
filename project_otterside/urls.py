@@ -41,7 +41,6 @@ urlpatterns = [
     # Wire up API using automatic URL routing.
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
-    
     path('', include('social_django.urls', namespace='social')),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
     name='logout'),
