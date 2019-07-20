@@ -13,22 +13,15 @@
 <hr>
 {% endcomment %}
 
-<h1>Snippets</h1>
     {% if user.is_authenticated %}
   <div class='tc center avenir w-70'>
       {% for obj in list_of_snippets %}
-        <div class='ba bg-blue white'>
-          <p><strong> {{obj.title}}</strong></p>
-          <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
-          <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
-          <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
-
-        </div>
-        <div>
-          <p>added {{obj.date_added}}</p>
-      </div>
-        <div>
-          <p> Language: {{obj.languages}}</p>
+        <div class='near-black'>
+          <p class ='f3'>{{obj.title}}</p>
+          <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
+          <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+          <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
+          <p>Language: {{obj.languages|title}} | <span>  added {{obj.date_added}}</span></p> 
         </div>
         <div>
         <pre><code class='language-{{obj.languages}}'>
@@ -40,7 +33,7 @@
 
  {% else %}
  
- <div>
+ <div class='center tc'>
   {% load static %}
   <img class= "br3" src="{% static 'images/otter.png' %}" alt="Otter waving">
  </div>
