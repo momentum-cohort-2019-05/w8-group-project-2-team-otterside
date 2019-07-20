@@ -78,7 +78,8 @@ class Snippet(models.Model):
             return f'{self.title}'
         
         def get_absolute_url(self):
-            return reverse('edit_snippet', args=[str(self.pk)])
+            return reverse('snippet-detail', args=[str(self.id)])
+
 
 
 

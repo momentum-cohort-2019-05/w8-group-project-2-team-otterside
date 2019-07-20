@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="tc ph4">
+    <h2 class="mt1 mb0 f4 fw3 ttu tracked"><strong><emphasis>Snippet List:</emphasis></strong></h2>
+<ul>
+    <p class="f5 lh-copy measure">
+    {% for obj in snippet_list %}
+    <p><br>
+      <div class="normal f3"><a href="{% url 'snippet-detail' obj.id%}">{{ obj.title}}</a><span class="f4"> by {{ obj.creator}}</span></div>
+    </p>
+    </p>
+    {% endfor %}   
+    </p> 
+</ul>  
+</header>
+{% endblock %}

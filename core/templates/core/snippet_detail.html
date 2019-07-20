@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='ba bg-blue white'>
+    <p><strong> {{obj.title}}</strong></p>
+    <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{{ obj.get_absolute_url }}">Edit</a>
+    <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+    <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="">Delete</a>
+  </div>
+  <div>
+      <p>by {{obj.creator}}</p>
+      <p>added {{obj.date_added}}</p>
+  </div>
+  <div>
+    <p> Language: {{obj.languages}}</p>
+  </div>
+  <div><pre><code class='language-{{obj.languages}}'>
+  <p>{{obj.code }}</p>
+  </code></pre>
+  </div>
+
+{% endblock %}

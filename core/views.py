@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django_filters.rest_framework import DjangoFilterBackend
+from django.views import generic
 
 def index(request):
     """View function for home page of site."""
@@ -36,6 +37,14 @@ class SnippetUpdate(UpdateView):
     model = Snippet
     fields = '__all__'
     success_url = reverse_lazy('index')
+
+# Snippet List View
+class SnippetListView(generic.ListView):
+    model = Snippet
+
+# Snippet Detail View
+class SnippetDetailView(generic.DetailView):
+    model = Snippet
 
 # View to delete snippet
 def delete_snippet(request):
