@@ -66,7 +66,7 @@ def copy_snippet(request, pk):
 
 # View to see list of snippets on user page
 def user_view(request):
-    """View function for user to view all books in favorite list."""
+    """View function for user to view all code snippets on user page."""
     user_list = UserPage.objects.filter(user=request.user)
 
     return render(request, 'core/user_detail.html', {'user_list': user_list})
