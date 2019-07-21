@@ -10,16 +10,16 @@
         {{form|crispy}}
         <button class= "f3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue" type="submit">Done</button>
     </form>
-{% endif %}
 {% elif request.user.is_authenticated %}
-<p>You are not authorized to delete the snippet for this user.</p>
-{% else %}
-<ul>
-    <li>
-        <a href="{% url 'auth_login' %}">Login to Continue</a>
-    </li>
-    <li>
-        <a href="{% url 'registration_register' %}">Register to create a snippet</a>
-    </li>
-</ul>
+    <p>You are not authorized to add a snippet for this user.</p>
+    {% else %}
+    <ul style="list-style: none;">
+        <li>
+            <a href="{% url 'auth_login' %}">Login to Continue</a>
+        </li>
+        <li>
+            <a href="{% url 'registration_register' %}">Register to create a snippet</a>
+        </li>
+    </ul>
+{% endif %}
 {% endblock %}
