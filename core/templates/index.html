@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 
-{% block content %}
-{% comment %}
-<hr>
-<div id="searchDiv">
-<h2 id="searchHeader">Search Results: </h2>
-</div>
-<br>
-<div id="searchResults">
-  <div id="search"></div>
-</div>
-<hr>
-{% endcomment %}
 
+{% block sidebar %}
+
+{% include "snippets/sidebar.html" %}
+
+{% endblock %}
+
+{% block content %}
     {% if user.is_authenticated %}
-  <div class='tc center avenir w-70'>
+  <div class='bg-yellow'>
       {% for obj in list_of_snippets %}
         <div class='near-black'>
           <p class ='f3'>{{obj.title|title}}</p>
@@ -46,4 +41,8 @@
 
  {% endif %}
 
+{% endblock %}
+
+{% block footer %}
+{% include "snippets/footer.html" %}
 {% endblock %}

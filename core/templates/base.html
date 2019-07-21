@@ -19,10 +19,19 @@
 
 <body class= "mw-100">
     {% include "snippets/nav.html" %}
-    <div class = 'avenir ml5 mt5'>
+    <div class="flex-ns">
+    <div class="sidebar">
+      {% block sidebar %}
+    
+      {% endblock %}
+    </div>
+    <div class = "fl snippet-bar avenir w-70-ns tc pv5 pa2 ml5">
     {% block content %}
     {% endblock %}
-    </div>  
-    {% include "snippets/footer.html" %}
+    </div> 
+    </div> 
+
+  {% block footer %}
+  {% endblock %}
 </body>
 </html>

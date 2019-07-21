@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="ml3 mt0 pa2">
+<div class="ml3 mt0 pa2 tc center">
     <form method="GET">
         <tr class="flex wrap around">
                 <td>{{ filter.form.title__icontains.label_tag }}</td>
@@ -23,7 +23,7 @@
   <h2>Search Code Snippet Manager</h2>
   {% if filter.qs %}
     {% for obj in filter.qs %}
-    <div class='near-black'>
+    <div class='near-black tc center'>
         <p class ='f3'>{{obj.title|title}}</p>
         <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
         <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
