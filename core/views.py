@@ -8,6 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
+from core.filters import SnippetFilter
 
 def index(request):
     """View function for home page of site."""
@@ -62,6 +63,14 @@ def copy_snippet(request, pk):
             messages.success(request, f"You have added {snippet.copy_snippet} to your user page.")
             
     return HttpResponseRedirect(request.GET.get("next"))
+
+
+def search_snippets(request):
+    template_name = 'core/search_list.html'
+    snippets = Snippet.objects.filter()
+    snippets_filter = SnippetFilter(request.GET, queryset=snippets)
+
+    return render(request, 'core/search_list.html', {'filter': snippets_filter})
 
 
 # View to see list of snippets on user page
