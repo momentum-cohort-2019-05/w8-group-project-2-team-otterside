@@ -3,25 +3,7 @@
 
 {% block sidebar %}
 
-<div class= "mt5 ml5 bg-blue avenir br3">
-  <div class='tc center pa4'><a class="link dim white f6 f5-ns dib mr3" href="{% url 'search_list' %}">Search Code Snippets</a></div>
-  {% if request.user.is_authenticated %}
-  <div class="red tc center pa4">Logged in as {{ request.user|title }}</div> 
-  <div class=" tc center">
-  <a class="link dim white f6 f5-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
-  </div>
-  <div class=" tc center pa4">
-  <a class="link dim white f6 f5-ns dib mr3" href="{% url 'user_page' %}">User Profile Page</a>
-  </div>
-  <div class=" tc center pa4">
-  <a class="link dim white f6 f5-ns dib mr3"  href="{% url 'snippets' %}">All Snippets</a>
-  </div>
-  {% else %}
-  <div class=" tc center pa4">
-  <a class="link dim white f6 f5-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
-  </div>
-  {% endif %}
-</div>
+{% include "snippets/sidebar.html" %}
 
 {% endblock %}
 
@@ -59,4 +41,8 @@
 
  {% endif %}
 
+{% endblock %}
+
+{% block footer %}
+{% include "snippets/footer.html" %}
 {% endblock %}

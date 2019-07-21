@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
+
+{% block sidebar %}
+
+{% include "snippets/sidebar.html" %}
+
+{% endblock %}
+
 {% block content %}
-<div class='ba bg-blue white'>
+<div class='ba bg-blue white w-100'>
 
 <h1>{{ user.get_username }} Page of Code Snippets:</h1>
     <br>

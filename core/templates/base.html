@@ -20,7 +20,7 @@
 <body class= "mw-100">
     {% include "snippets/nav.html" %}
     <div class="flex-ns">
-    <div id="sidebar avenir fl w-30-ns tc pv5 pa2 mr5">
+    <div class="sidebar">
       {% block sidebar %}
     
       {% endblock %}
@@ -31,6 +31,7 @@
     </div> 
     </div> 
 
-    {% include "snippets/footer.html" %}
+  {% block footer %}
+  {% endblock %}
 </body>
 </html>
