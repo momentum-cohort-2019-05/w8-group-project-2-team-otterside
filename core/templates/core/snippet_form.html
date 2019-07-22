@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
+
+
+{% block sidebar %}
+
+{% include "snippets/sidebar.html" %}
+
+{% endblock %}
+
+
 {% block content %}
 {% load crispy_forms_tags %}
 
 
 {% if request.user.is_authenticated %}
-<h1 class="center tc">Create/Edit Your Snippet</h1>
+<div class='center tc avenir'>
+<h1>Create/Edit Your Snippet</h1>
     <form method="POST" class="post-form center tl w-80">{% csrf_token %}
         {{form|crispy}}
         <button class= "f3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue" type="submit">Done</button>
@@ -21,5 +31,6 @@
             <a href="{% url 'registration_register' %}">Register to create a snippet</a>
         </li>
     </ul>
+</div>
 {% endif %}
 {% endblock %}
