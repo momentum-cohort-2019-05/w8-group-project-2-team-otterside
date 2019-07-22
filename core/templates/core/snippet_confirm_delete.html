@@ -12,7 +12,7 @@
 {% elif request.user.is_authenticated %}
 <p>You are not authorized to delete the snippet for this user.</p>
 {% else %}
-<ul>
+<ul style="list-style: none;">
     <li>
         <a href="{% url 'auth_login' %}">Login to Continue</a>
     </li>
