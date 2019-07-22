@@ -12,6 +12,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script>
   <script src="{% static 'js/prism.js' %}" defer></script>
   <script src="{% static 'js/compiled.js' %}" defer></script>
   {% endblock %}
@@ -19,10 +20,19 @@
 
 <body class= "mw-100">
     {% include "snippets/nav.html" %}
-    <div class = 'avenir ml5 mt5 center tc'>
+    <div class="flex flex-wrap bg-green">
+    <div class="bg-yellow">
+      {% block sidebar %}
+    
+      {% endblock %}
+    </div>
+    <div class = "ml3 mt5 bg-red w-70-ns">
     {% block content %}
     {% endblock %}
-    </div>  
-    {% include "snippets/footer.html" %}
+    </div> 
+    </div> 
+
+  {% block footer %}
+  {% endblock %}
 </body>
 </html>

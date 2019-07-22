@@ -1,0 +1,20 @@
+
+<div class= "mt5 f3-ns ml5-ns bg-blue avenir br3 justify">
+    <div class='pa4'><a class="link underline dim white f6 f5-ns dib mr3" href="{% url 'search_list' %}">Search Code Snippets</a></div>
+    {% if request.user.is_authenticated %}
+    <div class="red pa4 nt4">Logged in as {{ request.user|title }}</div> 
+    <div class="pa4 nt4">
+      <a class="link underline dim white f6 f5-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
+    </div>
+    <div class="pa4 nt2">
+      <a class="link underline  dim white f6 f5-ns dib mr3" href="{% url 'user_page' %}">User Profile Page</a>
+    </div>
+    <div class="pa4 nt2">
+      <a class="link underline dim white f6 f5-ns dib mr3"  href="{% url 'snippets' %}">All Snippets</a>
+    </div>
+    {% else %}
+    <div class="pa4">
+      <a class="link underline dim white f6 f5-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
+    </div>
+    {% endif %}
+  </div>

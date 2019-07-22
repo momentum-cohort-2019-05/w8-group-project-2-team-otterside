@@ -1,0 +1,21 @@
+<div class= "mt5 f4-ns ml5-ns bg-blue avenir br3 justify">
+
+    <form method="GET">
+        <div class="pa4">
+                <div>{{ filter.form.title__icontains.label_tag }}</div>
+                <div>{{ filter.form.title__icontains }}</div>
+
+                <div>{{ filter.form.code__icontains.label_tag }}</div>
+                <div>{{ filter.form.code__icontains }}</div>
+
+                <div>{{ filter.form.languages.label_tag }}</div>
+                <div>{{ filter.form.languages }}</div>
+
+                <div class='mt2'>{{ filter.form.creator.label_tag }}</div>
+                <div>{{ filter.form.creator }}</div>
+
+                <button class="bg-white mt5" type='submit'>Search</button>
+        </div>
+    </form>
+   
+  </div>
