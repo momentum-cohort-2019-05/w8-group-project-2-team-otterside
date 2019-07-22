@@ -2,3 +2,4 @@ User Profile page doesn't show snippets (being worked on, copy function)
 
 Contact button does nothing
 
+Clicking Register when already logged in does nothing

@@ -2,7 +2,7 @@
 <div class= " ml5-ns avenir br3 justify b--solid bw1 bg-blue">
     <div class="pa3 mb2"><a class="link underline dim white f5 f4-ns dib mr3" href="{% url 'search_list' %}">Search Code Snippets</a></div>
     {% if request.user.is_authenticated %}
-    <div class="red pa3 mb2 f5">Logged in as {{ request.user|title }}</div> 
+    <div class="yellow pa3 mb2 f5">Logged In As: {{ request.user|title }}</div> 
     <div class="pa3 mb2">
       <a class="link underline dim white f5 f4-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
     </div>
