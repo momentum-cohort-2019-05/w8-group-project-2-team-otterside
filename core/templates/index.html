@@ -9,7 +9,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-  <div class='bg-yellow'>
+  <div class='tc center avenir'>
       {% for obj in list_of_snippets %}
         <div class='near-black'>
           <p class ='f3'>{{obj.title|title}}</p>
