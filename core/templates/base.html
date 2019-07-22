@@ -20,13 +20,13 @@
 
 <body class= "mw-100">
     {% include "snippets/nav.html" %}
-    <div class="flex flex-wrap bg-green">
-    <div class="bg-yellow">
+    <div class="flex flex-wrap">
+    <div class="mt5">
       {% block sidebar %}
     
       {% endblock %}
     </div>
-    <div class = "ml3 mt5 bg-red w-70-ns">
+    <div class = "ml4 mt5 w-70-ns">
     {% block content %}
     {% endblock %}
     </div> 
