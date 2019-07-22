@@ -16,7 +16,7 @@ You need a good way to manage snippets of code you reuse often. You are going to
 In addition to working on the project description, we were encouraged to add to the project by learning how to utilize a feature or features we had not previously used. Our group achieved the following additions for the project:
 
 - Utilized Markdown to modify the README
-- Utilized Third-Party Apps: Django Filter, Rest Framework API, Prism.JS, and Clipboard.JS
+- Utilized Third-Party Apps: Django Filter, Rest Framework API, Crispy Forms, Prism.JS, and Clipboard.JS
 
 ## Creating a Github Repository
 - On Github, click "New" to create a repository

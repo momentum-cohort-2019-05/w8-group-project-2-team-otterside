@@ -31,16 +31,27 @@ router.register(r'snippets', SnippetViewSet)
 router.register(r'customusers', CustomUserViewSet)
 
 urlpatterns = [
+    # Index and Admin
     path('', core_views.index, name='index'), 
     path('admin/', admin.site.urls),
+
+    # Django Registration 
     path('accounts/', include('registration.backends.simple.urls')),
+
+    # Snippet List and Detail Views
     path('snippets/', core_views.SnippetListView.as_view(), name='snippets'),
     path('snippet/<int:pk>', core_views.SnippetDetailView.as_view(), name='snippet-detail'),
+
+    # Add, Edit, Delete, and Copy Snippets
     path('add_snippet', core_views.add_snippet, name='add_snippet'),
     path('edit_snippet/<int:pk>/edit/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
     path('delete/', core_views.delete_snippet, name='delete_snippet'),
     path('snippet/<int:pk>/copy_snippet/', core_views.copy_snippet, name='copy_snippet'),
+
+    # User Page for Snippets
     path('user_page/', core_views.user_view, name='user_page'),
+
+    # Search Results for Snippets
     path('snippets/search', core_views.search_snippets, name = 'search_list'),
 
     # Wire up API using automatic URL routing.
