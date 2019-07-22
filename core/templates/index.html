@@ -1,24 +1,21 @@
 {% extends 'base.html' %}
 
-
-{% block sidebar %}
-
-{% include "snippets/sidebar.html" %}
-
-{% endblock %}
-
 {% block content %}
   {% if request.user.is_authenticated %}
 
-  <div class='tc center avenir'>
+  <div class='avenir tc center'>
+    <h3 class="underline"> Latest Snippets:</h3>
       {% for obj in list_of_snippets %}
         <div class='near-black'>
-          <p class ='f3'>{{obj.title|title}}</p>
+          <div class='mt4'>
+          <p class ='f4 green fw6'>{{obj.title|title}}</p>
+          {% comment %}
           <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
           <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
           <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
           <button class="copy-button f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" data-id="{{obj.id}}" data-title="{{obj.title}}"  data-creator="{{obj.creator}}" data-date="{{obj.date_added}}" data-languages="{{obj.languages}}" data-code="{{obj.code}}" data-clipboard-target="#obj-content-{{obj.id}}"> 
-            Copy Snippet</button>    
+            Copy Snippet</button>   
+          {% endcomment %} 
           {% if request.user not in snippet.copy_snippet.all %}
             <a href="{% url 'copy_snippet' snippet.pk %}?next={{ request.path }}">Add to User Page</a>   |   Added to Database: {{ snippet.date_added }}
           {% elif request.user in snippet.copy_snippet.all %}
@@ -26,20 +23,40 @@
           {% endif %}
           <p>Language: {{obj.languages|title}} | <span>  added {{obj.date_added}}</span></p> 
         </div>
-        <div class= "mw-100">
+      </div>
+        <div class= "mw-100 b--solid br3 mt4">
         <pre><code class='language-{{obj.languages}}'>
         <p>{{obj.code }}</p>
         </code></pre>
         </div>
+        <div class= "mt3">
+        <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
+        <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+        <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
+        <button class="copy-button f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" data-id="{{obj.id}}" data-title="{{obj.title}}"  data-creator="{{obj.creator}}" data-date="{{obj.date_added}}" data-languages="{{obj.languages}}" data-code="{{obj.code}}" data-clipboard-target="#obj-content-{{obj.id}}"> 
+          Copy Snippet</button>    
+        </div>
       {% endfor %}
- </div>
+      
+</div>
 
  {% else %}
  
- <div class='center tc'>
+ <div class='center tc nl2'>
+  
+  {% comment %}
   {% load static %}
   <img class= "br3" src="{% static 'images/otter.png' %}" alt="Otter waving">
- </div>
+  {% endcomment %}
+  
+  <h1>Welcome to the OtterSide!</h1> 
+  <p> You can use our website to search and store your
+    code snippets.
+  </p>
+
+  <div class="pa3 mb2"><a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue " href="{% url 'search_list' %}">Search Code Snippets</a></div>
+
+</div>
 
 
  {% endif %}

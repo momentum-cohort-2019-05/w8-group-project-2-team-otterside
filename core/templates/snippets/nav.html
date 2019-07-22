@@ -1,13 +1,20 @@
 {% load static %}
 
-<nav class='flex flex-wrap bg-dark-blue'>
+<nav class='bg-dark-blue'>
     <div class='nav-bar pa3 bg-dark-blue avenir'>
         <img src="{% static 'images/otterlogo.png' %}" class="dib w2 " alt="Site Name">
-        <a class="link dim white b f6 f5-ns dib mr3" href="{% url 'index' %}" title="Home"> The OtterSide</a>
-        <a class="link dim white f6 f5-ns dib mr3" href="{% url 'index' %}" title="Home">Home</a>
-        <a class="link dim white f6 f5-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
-        <a class="link dim white f6 f5-ns dib mr3" href="#" title="Contact">Contact</a>
-    </div>
+        <a class="link dim white b f6 f6-ns dib mr3" href="{% url 'index' %}" title="Home"> The OtterSide</a>
+        <a class="link dim white f6 f6-ns dib mr3" href="{% url 'index' %}" title="Home">Home</a>
+        {% if request.user.is_authenticated %}
+    <div class="red pa3 mb2 f6">Logged in as {{ request.user|title }}</div> 
+      <a class="link underline dim white f6 f-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
+      <a class="link underline  dim white f6 f6-ns dib mr3" href="{% url 'user_page' %}">User Profile Page</a>
+      <a class="link underline dim white f6 f6-ns dib mr3"  href="{% url 'snippets' %}">All Snippets</a>
+    {% else %}
+      <a class="link underline dim white f6 f6-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
+    {% endif %}
+        <a class="link dim white f6 f6-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
+        <a class="link underline dim white f6 f6-ns dib mr3" href="{% url 'search_list' %}">Search Code Snippets</a>
     {% comment %}
     <div class="div-search tr-l bg-dark-blue ml7-ns">
     <form id="searchForm">
