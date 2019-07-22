@@ -16,6 +16,8 @@
           <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
           <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
           <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
+          <button class="copy-button" data-id="{{obj.id}}" data-title="{{obj.title}}"  data-creator="{{obj.creator}}" data-date="{{obj.date_added}}" data-languages="{{obj.languages}}" data-code="{{obj.code}}" data-clipboard-target="#obj-content-{{obj.id}}"> 
+            Copy Snippet</button>    
           {% if request.user not in snippet.copy_snippet.all %}
             <a href="{% url 'copy_snippet' snippet.pk %}?next={{ request.path }}">Add to User Page</a>   |   Added to Database: {{ snippet.date_added }}
           {% elif request.user in snippet.copy_snippet.all %}
