@@ -21,7 +21,10 @@ def index(request):
     }
     return render(request, 'index.html', context=context)
 
+# View to add snippet
 def add_snippet(request):
+    """View function for adding snippets."""
+
     snippet = get_list_or_404(Snippet)
     if request.method == "POST":
         form = SnippetForm(request.POST)
@@ -43,10 +46,12 @@ class SnippetUpdate(UpdateView):
 
 # Snippet List View
 class SnippetListView(generic.ListView):
+    """View for seeing a list of snippets."""
     model = Snippet
 
 # Snippet Detail View
 class SnippetDetailView(generic.DetailView):
+    """View to see each snippet instance."""
     model = Snippet
 
 # View to copy snippet
@@ -64,8 +69,9 @@ def copy_snippet(request, pk):
             
     return HttpResponseRedirect(request.GET.get("next"))
 
-
+# View to search for code snippets
 def search_snippets(request):
+    """View function to search for code snippets. This view is connected with Django Filters."""
     template_name = 'core/search_list.html'
     snippets = Snippet.objects.filter()
     snippets_filter = SnippetFilter(request.GET, queryset=snippets)
@@ -82,6 +88,7 @@ def user_view(request):
 
 # View to delete snippet
 def delete_snippet(request):
+    """View function for user to delete snippets."""
     snippet = get_list_or_404(Snippet)
 
     if request.method =="POST":
@@ -90,14 +97,3 @@ def delete_snippet(request):
         return redirect('index')
     
     return render(request, 'core/snippet_confirm_delete.html')
-
-# View to search snippet
-def search_snippet(request):
-    if request.method == "POST":
-        search_text = request.POST['search_text']
-    else:
-        search_text = ''
-    
-    snippets = Snippet.objects.filter(title__contains=search_text)
-
-    return render(request, 'base.html', {'snippets': snippets})

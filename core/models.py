@@ -12,6 +12,8 @@ class CustomUser(AbstractUser):
 class Snippet(models.Model):
         """Model Representing a Snippet Model"""
         title = models.CharField(max_length=200, help_text="Enter title for snippet of code")
+
+        # Languages for Dropdown
         PYTHON = 'python'
         JAVASCRIPT = 'js'
         HTML = 'html'
@@ -59,7 +61,7 @@ class Snippet(models.Model):
         choices=LANGUAGE_CHOICES,
         default=HTML,
     )
-
+        # Field for user to enter the code for a snippet
         code = models.TextField(help_text="Enter the snippet code")
         
         # Description field is optional
