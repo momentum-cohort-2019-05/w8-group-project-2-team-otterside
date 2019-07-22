@@ -22,6 +22,7 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 # View to add snippet
+
 def add_snippet(request):
     """View function for adding snippets."""
 
@@ -75,11 +76,13 @@ def search_snippets(request):
     template_name = 'core/search_list.html'
     snippets = Snippet.objects.filter()
     snippets_filter = SnippetFilter(request.GET, queryset=snippets)
+   
 
     return render(request, 'core/search_list.html', {'filter': snippets_filter})
 
 
 # View to see list of snippets on user page
+
 def user_view(request):
     """View function for user to view all code snippets on user page."""
     user_list = UserPage.objects.filter(user=request.user)
@@ -87,6 +90,7 @@ def user_view(request):
     return render(request, 'core/user_detail.html', {'user_list': user_list})
 
 # View to delete snippet
+
 def delete_snippet(request):
     """View function for user to delete snippets."""
     snippet = get_list_or_404(Snippet)
