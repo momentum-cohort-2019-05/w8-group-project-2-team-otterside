@@ -13,6 +13,7 @@ function qAll (selector) {
 let input
 let searchURL
 let count = 0
+const $ = require('jquery')
 let csrftoken = getCookie('csrftoken')
 const searchResults = q('#searchResults')
 const copyResults = q('#copyResults')
@@ -60,7 +61,7 @@ function getSearch(codes){
                 <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
                 <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
                 <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetDelete" href="{% url 'delete_snippet' obj.pk %}">Delete</a>
-                <button class="copy-button" data-id="${obj.id}" data-title="${obj.title}"  data-creator="${obj.creator}" data-date="${obj.date_added}" data-languages="${obj.languages}" data-code="${obj.code}" data-clipboard-target="#obj-content-${obj.id}"> 
+                <button class="copy-button" data-id="${codes.id}" data-title="${codes.title}"  data-creator="${codes.creator}" data-date="${codes.date_added}" data-languages="${codes.languages}" data-code="${codes.code}" data-clipboard-target="#obj-content-${codes.id}"> 
                 Copy Snippet</button>   
             </div>
             <div>
