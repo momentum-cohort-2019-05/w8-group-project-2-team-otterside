@@ -8,7 +8,7 @@
 
 <h1>{{ user.get_username }} Page of Code Snippets:</h1>
     <br>
-{% if snippets %}
+
     {% for obj in snippets %}
         <p><strong> {{obj.title}}</strong></p>
         <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
@@ -27,6 +27,6 @@
     </code></pre>
     </div>
     {% endfor %}
-{% endif %}
+
 
 {% endblock %}
