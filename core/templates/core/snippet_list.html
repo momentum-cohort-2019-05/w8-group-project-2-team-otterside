@@ -9,7 +9,7 @@
     <p class="f5 lh-copy measure">
     {% for obj in snippet_list %}
     <p><br>
-      <div class="normal f3"><a href="{% url 'snippet-detail' obj.id%}">{{ obj.title}}</a><span class="f4"> by {{ obj.creator}}</span></div>
+      <div class="normal f3" id="snippetTitle"><a href="{% url 'snippet-detail' obj.pk %}">{{ obj.title}}</a><span class="f4" id="snippetCreator"> by {{ obj.creator}}</span></div>
     </p>
     </p>
     {% endfor %}   

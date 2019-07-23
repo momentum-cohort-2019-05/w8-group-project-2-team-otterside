@@ -13,26 +13,17 @@
   <h2>Search Code Snippet Manager</h2>
   {% if filter.qs %}
     {% for obj in filter.qs %}
-        <p class ='f3 green fw5'>{{obj.title|title}}</p>
-        {% comment %}
-        <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
-        <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
-        {% endcomment %}
-        {% if request.user not in snippet.copy_snippet.all %}
-        <a href="{% url 'copy_snippet' snippet.pk %}?next={{ request.path }}">Add to User Page</a>   |   Added to Database: {{ snippet.date_added }}
-        {% elif request.user in snippet.copy_snippet.all %}
-        <a href="{% url 'copy_snippet' snippet.pk %}?next={{ request.path }}">Remove from User Page</a>   |   Added to Database: {{ snippet.db_date_added }}  
-        {% endif %}
-        <p>Language: {{obj.languages|title}} | <span>  added {{obj.date_added}}</span><span class="f4"> by {{ obj.creator}}</span> 
+        <p class ='f3 green fw5' id="snippetTitle">{{obj.title|title}}</p>
+        <p id="snippetLanguageDate">Language: {{obj.languages|title}} | <span>  added {{obj.date_added}}</span><span class="f4"> by {{ obj.creator}}</span> 
        
     <div class= 'b--solid br3 b--moon-gray'>
-      <pre><code class='language-{{obj.languages}}'>
-        <p>{{obj.code }}</p>
-      </code></pre>
+    <pre><code class='language-{{obj.languages}}'>
+    <p id="snippetCode">{{obj.code }}</p>
+    </code></pre>
     </div>
     <div class="mt3 mb3">
-      <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
-      <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
+    <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
+    <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
     </div>
     
     {% endfor %}
