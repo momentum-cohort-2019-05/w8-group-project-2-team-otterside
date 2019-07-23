@@ -25,9 +25,9 @@ class SnippetViewSet(viewsets.ModelViewSet):
 
 
 
-class DeleteSnippet(generics.DestroyAPIView):
-    """
-    API endpoint that allows snippets to be deleted.
-    """
-    queryset = Snippet.objects.all()
-    serializer_class = SnippetSerializer
+# class DeleteSnippet(generics.DestroyAPIView):
+#     """
+#     API endpoint that allows snippets to be deleted.
+#     """
+#     queryset = Snippet.objects.all()
+#     serializer_class = SnippetSerializer
