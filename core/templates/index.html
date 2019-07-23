@@ -43,19 +43,13 @@
  {% else %}
  
  <div class='center tc nl2'>
-  
-  {% comment %}
   {% load static %}
-  <img class= "br3" src="{% static 'images/otter.png' %}" alt="Otter waving">
-  {% endcomment %}
-  
-  <h1>Welcome to the OtterSide!</h1> 
-  <p> You can use our website to search and store your
-    code snippets.
-  </p>
-
-  <div class="pa3 mb2"><a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue " href="{% url 'search_list' %}">Search Code Snippets</a></div>
-
+    <img class= "br-pill b--dark-blue b--solid" src="{% static 'images/otter.png' %}" alt="Otter waving">
+  <div>
+      <p class='avenir f3 mt4'> Otterside was designed to store snippets of your code to facilitate your life. </br>
+      You can also search through our entire website for snippets.</p>
+      <a class="f4 link dim br4 ph3 pv2 mt4 mb4 dib white bg-dark-blue " href="{% url 'search_list' %}">Search Code Snippets</a>
+  </div>
 </div>
 
 

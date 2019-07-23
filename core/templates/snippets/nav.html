@@ -1,29 +1,27 @@
 {% load static %}
 
-<nav class='bg-dark-blue'>
-    <div class='nav-bar pa3 bg-dark-blue avenir'>
-        <img src="{% static 'images/otterlogo.png' %}" class="dib w2 " alt="Site Name">
-        <a class="link dim white b f6 f6-ns dib mr3" href="{% url 'index' %}" title="Home"> The OtterSide</a>
-        <a class="link dim white f6 f6-ns dib mr3" href="{% url 'index' %}" title="Home">Home</a>
-        {% if request.user.is_authenticated %}
-    <div class="red pa3 mb2 f6">Logged in as {{ request.user|title }}</div> 
-      <a class="link underline dim white f6 f-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
-      <a class="link underline  dim white f6 f6-ns dib mr3" href="{% url 'user_page' %}">User Profile Page</a>
-      <a class="link underline dim white f6 f6-ns dib mr3"  href="{% url 'snippets' %}">All Snippets</a>
-    {% else %}
-      <a class="link underline dim white f6 f6-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
-    {% endif %}
-        <a class="link dim white f6 f6-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
-        <a class="link underline dim white f6 f6-ns dib mr3" href="{% url 'search_list' %}">Search Code Snippets</a>
-    {% comment %}
-    <div class="div-search tr-l bg-dark-blue ml7-ns">
-    <form id="searchForm">
-        <div id="codeSearch"> 
-            <input id="searchBar" class="br3" type="text" placeholder="Search for Code Snippet..." onfocus="this.value=''">
-            <button id="searchButton" class= "f6 link dim br3 ph3 pv2 mb2 dib dark-blue bg-white" type="submit">Search</button>
-        </div>
-    </form>
-    {% endcomment %}
-    </div>
-    
+<nav class='bg-dark-blue pa3 avenir'>
+  <img src="{% static 'images/otterlogo.png' %}" class="dib w2 " alt="Site Name">
+    <a class="link dim white b f3-ns dib mr3" href="{% url 'index' %}" title="Home"> The OtterSide</a>
+    <a class="link dim white f4-ns dib mr3" href="{% url 'index' %}" title="Home">Home</a>
+  {% if request.user.is_authenticated %}
+    <a class="link dim white f5-ns dib mr3" href="{% url 'auth_logout' %}" title="Log out">Logout</a>
+    <a class="link dim white f5-ns dib mr3" href="{% url 'user_page' %}"> My Profile </a>
+    <a class="link dim white f5-ns dib mr3"  href="{% url 'snippets' %}"> My Snippets</a>
+  {% else %}
+    <a class="link dim white f5-ns dib mr3" href="{% url 'auth_login' %}" title="Login">Login</a>
+    <a class="link dim white f5-ns dib mr3" href="{% url 'registration_register' %}" title="Register">Register</a>
+  {% endif %}
+    <a class="f5-ns grow no-underline br-pill ba ph3 pv2 mb2 dib white fw6" title="Search" href="{% url 'search_list' %}">Search Code Snippets</a>
+{% comment %}
+<div class="div-search tr-l bg-dark-blue ml7-ns">
+  <form id="searchForm">
+    <div id="codeSearch"> 
+      <input id="searchBar" class="br3" type="text" placeholder="Search for Code Snippet..." onfocus="this.value=''">
+      <button id="searchButton" class= "f6 link dim br3 ph3 pv2 mb2 dib dark-blue bg-white" type="submit">Search</button>
+  </div>
+</form>
+{% endcomment %}
+
+
 </nav>
