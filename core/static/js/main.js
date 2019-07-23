@@ -13,7 +13,6 @@ function qAll (selector) {
 let input
 let searchURL
 let count = 0
-const $ = require('jquery')
 let csrftoken = getCookie('csrftoken')
 const searchResults = q('#searchResults')
 const copyResults = q('#copyResults')
@@ -41,46 +40,6 @@ function getCookie(name) {
 }
 
 
-// // When user releases Enter key, act as if submit button has been clicked
-// searchForm.addEventListener('keyup', function(event){
-//     if(event.keyCode === 'Enter'){
-//         event.preventDefault()
-//         searchButton.click()
-//     }
-// })
-
-
-// Function to display search results
-function getSearch(codes){
-
-    const resultsDiv = document.createElement('div')
-    resultsDiv.setAttribute("id", "resultsDiv")
-    resultsDiv.innerHTML = `
-            <div class='ba bg-blue white'>
-                <p id="snippetTitle"><strong>${codes.title}</strong></p>
-                <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
-                <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
-                <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetDelete" href="{% url 'delete_snippet' obj.pk %}">Delete</a>
-                <button class="copy-button" data-id="${codes.id}" data-title="${codes.title}"  data-creator="${codes.creator}" data-date="${codes.date_added}" data-languages="${codes.languages}" data-code="${codes.code}" data-clipboard-target="#obj-content-${codes.id}"> 
-                Copy Snippet</button>   
-            </div>
-            <div>
-                <p id="snippetCreator">by ${codes.creator}</p>
-                <p id="snippetDate">added ${codes.date_added}</p>
-            </div>
-            <div>
-                <p id="snippetLanguages"> Language: ${codes.languages}</p>
-            </div>
-            <div><pre><code class='language-${codes.languages}' id="obj-content-{{codes.id}}">
-                <p id="snippetCode">${codes.code }</p>
-            </code></pre>
-            <div><p>Snippet has been copied {{count}} times.</p></div>
-            </div>
-    `
-
-    return resultsDiv
-}
-
 // Function to Display Snippet on User Page Upon Copying Snippet
 function UserPage(obj) {
 
@@ -92,7 +51,7 @@ function UserPage(obj) {
             <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
             <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
             <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetDelete" href="{% url 'delete_snippet' obj.pk %}">Delete</a>
-            <button class="copy-button" data-id="${obj.id}" data-title="${obj.title}"  data-creator="${obj.creator}" data-date="${obj.date_added}" data-languages="${obj.languages}" data-code="${obj.code}" data-clipboard-target="#obj-content-${obj.id}"> 
+            <button class="copy-button" data-id="${obj.id}" data-title="${obj.title}"  data-creator="${obj.creator}" data-date="${obj.date_added}" data-languages="${obj.languages}" data-code="${obj.code}" data-clipboard-target="#snippetCode"> 
             Copy Snippet</button>   
          </div>
         <div>
@@ -114,47 +73,46 @@ function UserPage(obj) {
 
 
 // Function to Copy Snippets using ClipboardJS
-// function copySnippet() {
+function copySnippet() {
 
-//     let copyButton = new ClipboardJS('.copy-button')
+    let copyButton = new ClipboardJS('.copy-button')
+    
 
-//     copyButton.on("success", function (event) {
-//         let obj = $(event.trigger).data()
-//         obj.content = event.text
-//         $.ajax({
-//             type: "POST",
-//             url: "/api/snippets/",
-//             dataType: "json",
-//             data: {
-//                 title: `${obj.title} `,
-//                 creator: `${obj.creator}`,
-//                 date: `${obj.date_added}`,
-//                 language: `${obj.languages} `,
-//                 code: `${obj.code} `,
-//                 csrfmiddlewaretoken: csrftoken,
-//             }
-//         }).then(function (success) {
-//             console.log(success)
-//             count++
-//             console.log(count)
-//             copyResults.innerHTML = ''
+    copyButton.on("success", function (event) {
+        console.log(event)
+        let obj = $(event.trigger).data()
+        obj.content = event.text
+        console.log(obj)
+        $.ajax({
+            type: "POST",
+            url: "/add_snippet/",
+            dataType: "json",
+            data: {
+                title: event.target.dataset['title'],
+                creator: event.target.dataset['creator'],
+                date: event.target.dataset['date_added'],
+                language: event.target.dataset['languages'],
+                code: event.target.dataset['code'],
+                csrfmiddlewaretoken: csrftoken,
+            },
+        }).then(console.log(data)).then(function (success) {
+            console.log(success)
+            count++
+            console.log(count)
+            copyResults.innerHTML = ''
 
-//             copyResults.append(UserPage(obj))
-//         })
-//     })
+            copyResults.append(UserPage(obj))
+        })
+    })
+}
 
-//     copyButton.on("error", function (event) {
-//         console.error('Action:', event.action)
-//         console.error('Trigger:', event.trigger)
-//     })
-// }
 
-let titleCopy
-let creatorCopy
-let languagesCopy
-let codeCopy
-let copyOriginal
-let copyDict
+// let titleCopy
+// let creatorCopy
+// let languagesCopy
+// let codeCopy
+// let copyOriginal
+// let copyDict
 
 
 
@@ -162,56 +120,36 @@ let copyDict
 document.addEventListener('DOMContentLoaded', function() {
 
 // Execution for copySnippet()
-            // copySnippet()
+            copySnippet()
 
-            copyResults.addEventListener('click', function (event) {
-                if (event.target && event.target.matches('.copy-button')) {
-                    titleCopy = event.target.dataset['title']
-                    creatorCopy = event.target.dataset['creator']
-                    languagesCopy = event.target.dataset['languages']
-                    codeCopy = decodeURI(event.target.dataset['code'])
-                    copyOriginal = event.target.dataset['pk']
+            // copyResults.addEventListener('click', function (event) {
+            //     if (event.target && event.target.matches('.copy-button')) {
+            //         titleCopy = event.target.dataset['title']
+            //         creatorCopy = event.target.dataset['creator']
+            //         languagesCopy = event.target.dataset['languages']
+            //         codeCopy = decodeURI(event.target.dataset['code'])
+            //         copyOriginal = event.target.dataset['pk']
             
             
-                    copyDict = {
-                        "title": titleCopy,
-                        "creator": creatorCopy,
-                        "languages": languagesCopy,
-                        "code": codeCopy,
-                        "original": copyOriginal,
-                    }
-                    // console.log(copyDict)
-                    console.log(JSON.stringify(copyDict))
-                    fetch('http://localhost:8000/user_page', {
-                        method: 'POST',
-                        body: JSON.stringify(copyDict),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }).then(res => res.json())
-                        .then(response => console.log('Success:', JSON.stringify(response)))
-                        .catch(error => console.error('Error:', error));
-                }
-            })
+            //         copyDict = {
+            //             "title": titleCopy,
+            //             "creator": creatorCopy,
+            //             "languages": languagesCopy,
+            //             "code": codeCopy,
+            //             "original": copyOriginal,
+            //         }
+            //         // console.log(copyDict)
+            //         console.log(JSON.stringify(copyDict))
+            //         fetch('http://localhost:8000/user_page', {
+            //             method: 'POST',
+            //             body: JSON.stringify(copyDict),
+            //             headers: {
+            //                 'Content-Type': 'application/json'
+            //             }
+            //         }).then(res => res.json())
+            //             .then(response => console.log('Success:', JSON.stringify(response)))
+            //             .catch(error => console.error('Error:', error));
+            //     }
+            // })
 
-
-    // Execution for generating list of results upon search button clicked or enter key pressed
-    searchForm.addEventListener('submit', function(event) {
-        event.preventDefault()
-        input = encodeURIComponent(searchBar.value)
-        searchURL = `http://localhost:8000/?search=${(input)}`
-        
-
-        fetch(searchURL)
-            .then(response => response.json())
-            .then(function (data) {
-                console.log(data)
-                searchResults.innerHTML = ''
-
-                
-                for (let codes of data.results){
-                    searchResults.appendChild(getSearch(codes))
-                }
-        })
-    })
 })

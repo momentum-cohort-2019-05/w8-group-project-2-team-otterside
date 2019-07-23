@@ -45,7 +45,7 @@ urlpatterns = [
     path('snippets/<int:pk>', core_views.SnippetDetailView.as_view(), name='snippet-detail'),
 
     # Add, Edit, Delete, and Copy Snippets
-    path('add_snippet', core_views.add_snippet, name='add_snippet'),
+    path('add_snippet/', core_views.add_snippet, name='add_snippet'),
     path('edit_snippet/<int:pk>/edit/', core_views.SnippetUpdate.as_view(), name='edit_snippet'),
     path('delete_snippet/<int:pk>/delete', core_views.SnippetDelete.as_view(), name='delete_snippet'),
 
