@@ -55,20 +55,6 @@ class SnippetDetailView(generic.DetailView):
     """View to see each snippet instance."""
     model = Snippet
 
-# View to copy snippet
-def copy_snippet(request, pk):
-    """View function for user to copy snippet to user page."""
-    snippet = get_object_or_404(Snippet, pk=pk)
-    
-    if request.method == 'GET':
-        if request.user in snippet.copy_snippet.all():
-            snippet.copy_snippet.remove(request.user)
-            messages.info(request, f"You have removed {snippet.copy_snippet} from your user page.")
-        else:
-            snippet.copy_snippet.add(request.user)
-            messages.success(request, f"You have added {snippet.copy_snippet} to your user page.")
-            
-    return HttpResponseRedirect(request.GET.get("next"))
 
 # View to search for code snippets
 def search_snippets(request):
@@ -82,7 +68,6 @@ def search_snippets(request):
 
 
 # View to see list of snippets on user page
-
 def user_view(request):
     """View function for user to view all code snippets on user page."""
     user_list = UserPage.objects.filter(user=request.user)
@@ -90,10 +75,9 @@ def user_view(request):
     return render(request, 'core/user_detail.html', {'user_list': user_list})
 
 # View to delete snippet
-
-def delete_snippet(request):
+def delete_snippet(request, pk):
     """View function for user to delete snippets."""
-    snippet = get_list_or_404(Snippet)
+    snippet = get_list_or_404(Snippet, pk)
 
     if request.method =="POST":
         snippet.delete()
@@ -101,3 +85,7 @@ def delete_snippet(request):
         return redirect('index')
     
     return render(request, 'core/snippet_confirm_delete.html')
+
+class SnippetDelete(DeleteView):
+    model = Snippet
+    success_url = reverse_lazy('index')

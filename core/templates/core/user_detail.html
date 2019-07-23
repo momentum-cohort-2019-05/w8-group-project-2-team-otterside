@@ -8,25 +8,25 @@
 
 <h1>{{ user.get_username }} Page of Code Snippets:</h1>
     <br>
-{% if snippets %}
+
     {% for obj in snippets %}
-        <p><strong> {{obj.title}}</strong></p>
-        <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' href="{% url 'edit_snippet' obj.pk %}">Edit</a>
-        <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{% url 'add_snippet' %}">Add New</a>
-        <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" href="{{ obj.get_absolute_url }}">Delete</a>
+        <p id="snippetTitle"><strong> {{obj.title}}</strong></p>
+        <a class='f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
+        <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
+        <a class="f6 link mt5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetDelete" href="{% url 'delete_snippet' obj.pk %}">Delete</a>
     </div>
     <div>
-        <p>by {{obj.creator}}</p>
-        <p>added {{obj.date_added}}</p>
+        <p id="snippetCreator">by {{obj.creator}}</p>
+        <p id="snippetDate">added {{obj.date_added}}</p>
     </div>
     <div>
-        <p> Language: {{obj.languages}}</p>
+        <p id="snippetLanguage"> Language: {{obj.languages}}</p>
     </div>
     <div><pre><code class='language-{{obj.languages}}'>
-    <p>{{obj.code }}</p>
+    <p id="snippetCode">{{obj.code }}</p>
     </code></pre>
     </div>
     {% endfor %}
-{% endif %}
+
 
 {% endblock %}
