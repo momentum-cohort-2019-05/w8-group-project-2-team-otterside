@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# Configure Django App for Heroku.
-import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -181,5 +179,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-# Configure Django for Heroku
+# Configure Django App for Heroku.
+import django_heroku
 django_heroku.settings(locals())
