@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and snippet.creator == request.user %}
 
 <h2>Delete Snippet</h2>
 <p> Are you sure you want to delete {{ snippet.title }} ?</p>

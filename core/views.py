@@ -9,6 +9,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from core.filters import SnippetFilter
+from django.utils.decorators import method_decorator
 
 def index(request):
     """View function for home page of site."""
@@ -51,7 +52,11 @@ class SnippetListView(generic.ListView):
     """View for seeing a list of snippets."""
     model = Snippet
 
+    def get_queryset(self):
+        return Snippet.objects.filter(creator=self.request.user)
+
 # Snippet Detail View
+
 class SnippetDetailView(generic.DetailView):
     """View to see each snippet instance."""
     model = Snippet
