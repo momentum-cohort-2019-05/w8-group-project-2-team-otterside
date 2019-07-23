@@ -15,6 +15,7 @@ django-filter = "*"
 django-cors-headers = "*"
 django-heroku = "*"
 gunicorn = "*"
+django-rest-framework = "*"
 
 [requires]
 python_version = "3.7"
