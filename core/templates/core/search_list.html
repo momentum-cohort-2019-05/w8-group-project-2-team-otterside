@@ -10,10 +10,10 @@
 
   <div class="tc center avenir">
   
-  <h2>Search Code Snippet Manager</h2>
+  <h2>Search For Code Snippets</h2>
   {% if filter.qs %}
     {% for obj in filter.qs %}
-        <p class ='f3 green fw5' id="snippetTitle">{{obj.title|title}}</p>
+        <p class ='f3 green fw5 mt3' id="snippetTitle">{{obj.title|title}}</p>
         <p id="snippetLanguageDate">Language: {{obj.languages|title}} | <span>  added {{obj.date_added}}</span><span class="f4"> by {{ obj.creator}}</span> 
        
     <div class= 'b--solid br3 b--moon-gray'>
@@ -21,10 +21,12 @@
     <p id="snippetCode">{{obj.code }}</p>
     </code></pre>
     </div>
+    {% if user.is_authenticated %}
     <div class="mt3 mb3">
     <a class='f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue' id="snippetEdit" href="{% url 'edit_snippet' obj.pk %}">Edit</a>
     <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
     </div>
+    {% endif %}
     
     {% endfor %}
   {% else %}
