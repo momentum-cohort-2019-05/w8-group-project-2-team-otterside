@@ -23,6 +23,7 @@ def index(request):
 
 # View to add snippet
 
+@login_required
 def add_snippet(request):
     """View function for adding snippets."""
 
@@ -75,6 +76,7 @@ def user_view(request):
     return render(request, 'core/user_detail.html', {'user_list': user_list})
 
 # View to delete snippet
+@login_required
 def delete_snippet(request, pk):
     """View function for user to delete snippets."""
     snippet = get_list_or_404(Snippet, pk)
