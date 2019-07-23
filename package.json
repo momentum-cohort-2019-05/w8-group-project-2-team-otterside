@@ -11,6 +11,7 @@
     "django": "python3 manage.py runserver",
     "start:js": "watchify -o core/static/js/compiled.js core/static/js/main.js",
     "compile:js": "browserify -o core/static/js/compiled.js core/static/js/main.js",
-    "compile": "browserify -o core/static/js/compiled.js core/static/js/main.js"
+    "compile": "browserify -o core/static/js/compiled.js core/static/js/main.js",
+    "build": "browserify -o core/static/js/compiled.js core/static/js/main.js"
   }
 }
