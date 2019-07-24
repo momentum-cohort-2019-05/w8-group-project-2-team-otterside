@@ -27,9 +27,7 @@
     <a class="f6 link mt1 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" id="snippetAdd" href="{% url 'add_snippet' %}">Add New</a>
     </div>
     {% endif %}
-    <button class="copy-button f6 link mt3 dim br3 ph3 pv2 mb2 dib white bg-dark-blue" data-id="{{obj.id}}" data-title="{{obj.title}}"  data-creator="{{obj.creator}}" data-date="{{obj.date_added}}" data-languages="{{obj.languages}}" data-code="{{obj.code}}" data-clipboard-target="#snippetCode"> 
-      Copy Snippet</button>    
-    </div>
+    
     
     {% endfor %}
   {% else %}
