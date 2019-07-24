@@ -102,11 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         "code": code,
                         "copy": copyCode,
                     }
-                    // console.log(copyDict)
                     console.log(JSON.stringify(copySnippet))
                     fetch('http://localhost:8000/add_snippet', {
                         method: 'POST',
-                        body: JSON.stringify(copyDict),
+                        body: JSON.stringify(copySnippet),
                         headers: {
                             'Content-Type': 'application/json'
                         }
