@@ -9,7 +9,7 @@
 {% if request.user.is_authenticated %}
 <div class='center tc avenir'>
 <h1>Create/Edit Your Snippet</h1>
-    <form method="POST" class="post-form center tl w-80">{% csrf_token %}
+    <form method="POST" class="post-form center tl w-100">{% csrf_token %}
         {{form|crispy}}
         <button class= "f3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue" type="submit">Done</button>
     </form>
