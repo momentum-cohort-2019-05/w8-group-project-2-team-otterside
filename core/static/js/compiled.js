@@ -71,12 +71,12 @@ function UserPage(obj) {
     return copyDiv
 }
 
-
+let copy_button = qAll('.copy-button')
 
 // Function to Copy Snippets using ClipboardJS
 function copySnippet() {
 
-    let copyButton = new ClipboardJS('.copy-button')
+    let copyButton = new ClipboardJS(copy_button)
     
 
     copyButton.on("success", function (event) {
