@@ -15,7 +15,7 @@ let searchURL
 let count = 0
 let csrftoken = getCookie('csrftoken')
 const searchResults = q('#searchResults')
-const copyResults = q('#copyResults')
+const copyResults = q('#snippetDisplay')
 const searchForm = q('#searchForm')
 const searchButton = q('#searchButton')
 const searchBar = q('#searchBar')
@@ -71,49 +71,49 @@ function UserPage(obj) {
 }
 
 
-
-// Function to Copy Snippets using ClipboardJS
-function copySnippet() {
-
-    let copyButton = new ClipboardJS('.copy-button')
-    
-
-    copyButton.on("success", function (event) {
-        console.log(event)
-        let obj = $(event.trigger).data()
-        obj.content = event.text
-        console.log(obj)
-        $.ajax({
-            type: "POST",
-            url: "/add_snippet/",
-            dataType: "json",
-            data: {
-                title: event.target.dataset['title'],
-                creator: event.target.dataset['creator'],
-                date: event.target.dataset['date_added'],
-                language: event.target.dataset['languages'],
-                code: event.target.dataset['code'],
-                csrfmiddlewaretoken: csrftoken,
-            },
-        }).then(console.log(data)).then(function (success) {
-            console.log(success)
-            count++
-            console.log(count)
-            copyResults.innerHTML = ''
-
-            copyResults.append(UserPage(obj))
-        })
-    })
-}
-
-
-
+// Variables for Copying a Snippet
+let copy_button = q('.copy-button')
+let copyButton = new ClipboardJS(copy_button)
+let title
+let creator
+let languages
+let code
+let copy
+let copyCode
+let copySnippet
 
 // Main execution
 document.addEventListener('DOMContentLoaded', function() {
 
 // Execution for copySnippet()
-            copySnippet()
+ copyResults.addEventListener('click', function (event) {
+                if (event.target && event.target.matches(copyButton)) {
+                    title = event.target.dataset['title']
+                    creator = event.target.dataset['creator']
+                    languages = event.target.dataset['languages']
+                    code = decodeURI(event.target.dataset['code'])
+                    copyCode = event.target.dataset['pk']
 
+
+                    copySnippet = {
+                        "title": title,
+                        "creator": creator,
+                        "languages": languages,
+                        "code": code,
+                        "copy": copyCode,
+                    }
+                    // console.log(copyDict)
+                    console.log(JSON.stringify(copySnippet))
+                    fetch('http://localhost:8000/add_snippet', {
+                        method: 'POST',
+                        body: JSON.stringify(copyDict),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(res => res.json())
+                        .then(response => console.log('Success:', JSON.stringify(response)))
+                        .catch(error => console.error('Error:', error));
+                }
+            })
 
 })
