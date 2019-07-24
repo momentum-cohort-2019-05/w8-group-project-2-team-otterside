@@ -35,8 +35,9 @@
     <img class= "br-pill b--dark-blue b--solid" src="{% static 'images/otter.png' %}" alt="Otter waving">
   <div>
       <p class='avenir f3 mt4'> The Otterside was designed to allow users to save snippets of your code to quickly use them later. </br>
-      You can also search for snippets from other users and copy them to your own snippet library.</p>
-      <a class="f4 link dim br4 ph3 pv2 mt4 mb4 dib white bg-dark-blue " href="{% url 'search_list' %}">Search Code Snippets</a>
+      You can also search for snippets from other users and copy them to your own snippet library.</br>
+      <a class="link f4-ns avenir" href="{% url 'registration_register' %}" title="Register"> Click here to register</a></p>
+      <a class="f4 link dim br4 ph3 pv2 mt3 mb4 dib white bg-red " href="{% url 'search_list' %}">Search Code Snippets</a>
   </div>
 </div>
 
