@@ -43,7 +43,7 @@ def add_snippet(request):
 class SnippetUpdate(UpdateView):
     """View for editing snippet file"""
     model = Snippet
-    fields = '__all__'
+    fields = ['title', 'languages', 'code']
     success_url = reverse_lazy('index')
 
 # Snippet List View
