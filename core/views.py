@@ -28,7 +28,6 @@ def index(request):
 def add_snippet(request):
     """View function for adding snippets."""
     
-    snippet = get_list_or_404(Snippet)
     if request.method == "POST":
         form = SnippetForm(request.POST)
         if form.is_valid():
