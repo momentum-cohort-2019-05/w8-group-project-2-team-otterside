@@ -8,10 +8,16 @@
 <ul>
     <p class="f5 lh-copy measure">
     {% for obj in snippet_list %}
-    <p><br>
-      <div class="normal f3" id="snippetTitle"><a href="{% url 'snippet-detail' obj.pk %}">{{ obj.title}}</a><span class="f4" id="snippetCreator"> by {{ obj.creator}}</span></div>
-    </p>
-    </p>
+    <div class='ba bg-blue white'>
+      <p id="snippetTitle"><strong> {{obj.title}}</strong></p>
+    </div>
+    <div>
+      <p id="snippetLanguageDate">Language: {{obj.languages|title}} | <span> created by: {{obj.creator}}</span> | <span>  added {{obj.date_added}}</span></p> 
+    </div>
+    <div><pre><code class='language-{{obj.languages}}'>
+    <p id="snippetCode">{{obj.code }}</p>
+    </code></pre>
+    </div>
     {% endfor %}   
     </p> 
 </ul>  
