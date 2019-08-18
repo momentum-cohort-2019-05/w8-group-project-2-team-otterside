@@ -73,14 +73,13 @@ function UserPage(obj) {
 
 
 // Variables for Copying a Snippet
-let copy_button = q('.copy-button')
+let copy_button = qAll('.copy-button')
 let copyButton = new ClipboardJS(copy_button)
-let title
-let creator
-let languages
-let code
-let copy
+let copyTitle
+let copyCreator
+let copyLanguages
 let copyCode
+let copyPK
 let copySnippet
 
 // Main execution
@@ -89,19 +88,19 @@ document.addEventListener('DOMContentLoaded', function() {
 // Execution for copySnippet()
  copyResults.addEventListener('click', function (event) {
                 if (event.target && event.target.matches(copyButton)) {
-                    title = event.target.dataset['title']
-                    creator = event.target.dataset['creator']
-                    languages = event.target.dataset['languages']
-                    code = decodeURI(event.target.dataset['code'])
-                    copyCode = event.target.dataset['pk']
+                    copyTitle = event.target.dataset['title']
+                    copyCreator = event.target.dataset['creator']
+                    copyLanguages = event.target.dataset['languages']
+                    copyCode = decodeURI(event.target.dataset['code'])
+                    copyPK = event.target.dataset['pk']
 
 
                     copySnippet = {
-                        "title": title,
-                        "creator": creator,
-                        "languages": languages,
-                        "code": code,
-                        "copy": copyCode,
+                        "title": copyTitle,
+                        "creator": copyCreator,
+                        "languages": copyLanguages,
+                        "code": copyCode,
+                        "copy": copyPK,
                     }
                     console.log(JSON.stringify(copySnippet))
                     fetch('http://localhost:8000/add_snippet', {
