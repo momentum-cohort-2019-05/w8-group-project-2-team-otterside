@@ -3,10 +3,6 @@ In Momentum Learning, each group was asked to select a project to complete for o
 
 Team Otterside chose to work on "Project #1". The goal for the project was to develop a Code Snippet Manager web application. This README was been created as a way to learn how to use "Markdown", share how to setup the project, and list what our team learned through the project.
 
-## Team Otterside Deployment
-
-https://teamotterside-snippet-manager.herokuapp.com/
-
 ## Project Description for Code Snippet Manager Assigned in Momentum Learning
 
 You need a good way to manage snippets of code you reuse often. You are going to build a web application that has these goals:
