@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404, redirect, get_object_or_404
-from .models import Snippet, CustomUser, UserPage
+from .models import Snippet, User, UserPage
 from core.forms import SnippetForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse

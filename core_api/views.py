@@ -1,18 +1,18 @@
 from django.shortcuts import render
-from core.models import CustomUser, Snippet
-from core_api.serializers import CustomUserSerializer, SnippetSerializer
+from core.models import User, Snippet
+from core_api.serializers import UserSerializer, SnippetSerializer
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework.views import APIView
 
 
 # Views for API Created Here
-class CustomUserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows custom user to be viewed or edited.
+    API endpoint that allows user to be viewed or edited.
     """
-    queryset = CustomUser.objects.all()
-    serializer_class = CustomUserSerializer
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 

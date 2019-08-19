@@ -25,11 +25,11 @@ from core import views as core_views
 # Core_API APP
 from rest_framework import routers
 from core_api import views as core_api_views
-from core_api.views import SnippetViewSet, CustomUserViewSet
+from core_api.views import SnippetViewSet, UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'snippets', SnippetViewSet)
-router.register(r'customusers', CustomUserViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     # Index and Admin

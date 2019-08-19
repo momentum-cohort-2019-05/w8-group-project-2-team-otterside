@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
-from core.models import Snippet, CustomUser
+from core.models import Snippet, User
 
 # Models registered for Code Snippet 
 
@@ -10,7 +10,6 @@ class SnippetAdmin(admin.ModelAdmin):
     pass
 
 
-class CustomUserAdmin(UserAdmin):
-    model = CustomUser
-
-admin.site.register(CustomUser, CustomUserAdmin)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    pass
