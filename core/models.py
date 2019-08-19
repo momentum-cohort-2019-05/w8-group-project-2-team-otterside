@@ -68,12 +68,12 @@ class Snippet(models.Model):
         description = models.TextField(max_length=200, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
         
         # More descriptive than user
-        creator = models.ForeignKey(to=User, on_delete=models.CASCADE)
+        creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
         date_added = models.DateTimeField(auto_now_add=True)
 
          # ManyToManyField used because user list can contain many snippets 
-        copy_snippet = models.ManyToManyField(to=User, through='UserPage', help_text='Click to add snippet to user page.', related_name='LoggedIn')
+        copy_snippet = models.ManyToManyField(User, through='UserPage', help_text='Click to add snippet to user page.', related_name='LoggedIn')
         
         class Meta: 
             ordering = ['-date_added']
