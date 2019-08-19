@@ -1,10 +1,10 @@
-from core.models import CustomUser, Snippet
+from core.models import User, Snippet
 from rest_framework import serializers
 
 # Serializers Created Here
-class CustomUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['username', 'email']
 
 

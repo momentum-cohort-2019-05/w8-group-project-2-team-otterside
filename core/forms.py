@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import TextField
-from .models import Snippet, CustomUser
+from .models import Snippet, User
 
 class SnippetForm(forms.ModelForm):
 

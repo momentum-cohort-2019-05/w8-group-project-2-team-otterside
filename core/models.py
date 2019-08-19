@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 # Models Created for Code Snippet Manager
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     """Model Representing a User"""
     user_email = models.EmailField(max_length=255)
 
@@ -68,12 +68,12 @@ class Snippet(models.Model):
         description = models.TextField(max_length=200, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
         
         # More descriptive than user
-        creator = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
+        creator = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
         date_added = models.DateTimeField(auto_now_add=True)
 
          # ManyToManyField used because user list can contain many snippets 
-        copy_snippet = models.ManyToManyField(to=CustomUser, through='UserPage', help_text='Click to add snippet to user page.', related_name='LoggedIn')
+        copy_snippet = models.ManyToManyField(to=User, through='UserPage', help_text='Click to add snippet to user page.', related_name='LoggedIn')
         
         class Meta: 
             ordering = ['-date_added']
@@ -88,7 +88,7 @@ class Snippet(models.Model):
 
 class UserPage(models.Model):
     """Model representing a user selecting a snippet to add to user page"""
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     snippet = models.ForeignKey(Snippet, on_delete=models.CASCADE)
     copied_at = models.DateTimeField(auto_now_add=True)
 
