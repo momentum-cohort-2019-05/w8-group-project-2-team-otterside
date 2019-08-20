@@ -68,7 +68,7 @@ class Snippet(models.Model):
         description = models.TextField(max_length=200, null=True, blank=True, help_text="Enter a docstring to describe the snippet of code.")
         
         # More descriptive than user
-        creator = models.ForeignKey(User, on_delete=models.CASCADE)
+        creator = models.OnetoOneField(User, on_delete=models.CASCADE)
 
         date_added = models.DateTimeField(auto_now_add=True)
 
