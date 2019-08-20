@@ -16,6 +16,7 @@ django-cors-headers = "*"
 django-heroku = "*"
 gunicorn = "*"
 django-rest-framework = "*"
+django-registration = "*"
 
 [requires]
 python_version = "3.7"

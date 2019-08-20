@@ -58,7 +58,6 @@ urlpatterns = [
     # Wire up API using automatic URL routing.
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
-    path('', include('social_django.urls', namespace='social')),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
     name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
@@ -73,4 +72,3 @@ if settings.DEBUG:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
 
-SOCIAL_AUTH_URL_NAMESPACE = "users:social"
